@@ -1,14 +1,7 @@
 @import url('./reset.css');
 
-/* html */
-body {
-  background-color: #1e1e1e;
-}
-
-/* animations */
-@keyframes rotate {
-  from {rotate: z 0deg;}
-  to {rotate: z 360deg;}
+:root {
+  --overlay-bg-color: #1e1e1e;
 }
 
 /* class */
@@ -17,21 +10,43 @@ body {
   width: min(100% - 30px, 1080px);
 }
 
-.loading-screen {
-  animation: rotate 1.25s linear infinite;
-  border: 2px solid #fff;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  height: 50px;
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  width: 50px;
-}
-
 .map {
+  min-width: 100%;
   height: 100vh;
-  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {display: none;}
+
+.overlay {
+  background-color: var(--overlay-bg-color);
+  display: grid;
+  inset: 0px 0px 0px 0px;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-width: 100%;
+  place-items: center;
+  position: fixed;
+  z-index: 9999;
+}
+
+.overlay .loading {
+  animation: rotate 1.25s linear infinite;
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes rotate {
+  from {rotate: z 0deg;}
+  to {rotate: z 360deg;}
+}
+
+/* main */
+main {
+  display: grid;
+  height: 100vh;
+  min-width: 100%;
+}

@@ -15,19 +15,27 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
     <script src='./assets/script/index.js' defer></script>
-    <title>GPS</title>
+    <title></title>
   </head>
   <body>
-    <header>
-      <!-- <div class='container'></div> -->
-    </header>
+    <!-- <header><div class='container'></div></header> -->
     <main>
       <!-- <div class='container'></div> -->
-      <div class='loading-screen'></div>
       <div id='map' class='map'></div>
     </main>
-    <footer>
-      <!-- <div class='container'></div> -->
-    </footer>
+    <div class='overlay'>
+      <div class='loading'></div>
+    </div>
+    <!-- <footer><div class='container'></div></footer> -->
+    <!-- trick to avoid scroll bar when using 100vh -->
+    <script>
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      
+      window.addEventListener('resize', () => {
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      });
+    </script>
   </body>
 </html>
