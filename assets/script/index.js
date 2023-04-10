@@ -4,21 +4,27 @@ const loadingScreen = document.querySelector('.loading-screen');
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFtYW5jaGljaGFuIiwiYSI6ImNsZzEwamkwcjE0b20zcGxhdHk3b3Rnb2EifQ.WPkXz--D_pWcSZI2oMJBQQ';
   
-let map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
+  center: [0, 0],
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
   zoom: 15
 });
 
+map.dragPan.disable();
+
+const marker = new mapboxgl.Marker();
+
 function getLocation(position) {
   loadingScreen.style.display = 'none';
   
-  const {latitude, longitude} = position.coords;
+  const {longitude, latitude} = position.coords;
   
-  map.setCenter([longitude, latitude]);
-  
-  new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
-}
+  if (longitude && latitude) {
+    map.setCenter([longitude, latitude]);
+    marker.setLngLat([longitude, latitude]).addTo(map);
+  };
+};
 
 function errorHandler() {
   loadingScreen.style.animationPlayState = 'paused';
