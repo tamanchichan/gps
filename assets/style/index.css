@@ -1,9 +1,32 @@
 @import url('./reset.css');
 
+/* html */
+body {
+  background-color: #1e1e1e;
+}
+
+/* animations */
+@keyframes rotate {
+  from {rotate: z 0deg;}
+  to {rotate: z 360deg;}
+}
+
 /* class */
 .container {
   margin-inline: auto;
   width: min(100% - 30px, 1080px);
+}
+
+.loading-screen {
+  animation: rotate 1.25s linear infinite;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  height: 50px;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  width: 50px;
 }
 
 .map {
